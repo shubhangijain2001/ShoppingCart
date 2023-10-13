@@ -1,5 +1,6 @@
 h1{
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    text-align: center;
 }
 .alignElements{
    align-items: center;
@@ -10,3 +11,19 @@ h1{
 .colorRed{
     border: 2px solid red;
 }
+.required-pipe{
+    color:red
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: #D0E7D2;
+    color: black;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 40px;
+}
+

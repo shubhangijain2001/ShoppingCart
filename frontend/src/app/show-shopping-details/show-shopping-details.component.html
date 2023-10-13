@@ -5,7 +5,7 @@
         <router-outlet></router-outlet>
     <button class="btn btn-light col-md-2 ml-auto" routerLink="/details">Add Details</button>
     </div>
-    <table class="table table-dark text-center">
+    <table class="table text-center">
         <thead>
             <tr>
             <th>#UUID</th>
@@ -28,10 +28,11 @@
             <!-- <p-button (click)="confirmPosition('top')" icon="pi pi-arrow-down" label="Top" styleClass="p-button-warning"></p-button> -->
             
 <!-- <div class="card flex justify-content-center gap-2"> -->
-    <p-toast></p-toast>
-    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+    
     <!-- <p-button (click)="confirm1()" icon="pi pi-check" label="Confirm"></p-button> -->
     <button class="btn btn-dark md-2"><i class="fas fa-trash" (click)="delete(data.uuid)"></i></button>
+   <div style="background-color:#D0E7D2 ;"><p-toast></p-toast>
+    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog></div> 
     <!-- <p-button (click)="confirm2()" icon="pi pi-times" label="Delete" class="p-button-danger"></p-button>  -->
 <!-- </div> -->
 <!-- <button class="btn btn-dark md-2"><i class="fas fa-trash" (click)="delete(data.uuid)"></i></button></td> -->

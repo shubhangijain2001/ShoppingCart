@@ -17,11 +17,13 @@ import { ConfirmationService,MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { PaginatorModule } from 'primeng/paginator';
+import { RequiredPipe } from './pipe/required.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     ShowShoppingDetailsComponent,
-    ManipulateDetailsComponent
+    ManipulateDetailsComponent,
+    RequiredPipe
   ],
   imports: [
     BrowserModule,

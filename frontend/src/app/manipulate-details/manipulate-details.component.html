@@ -1,4 +1,4 @@
-<div class="container mt-5 alignElements">
+<div class="container mt-5">
   <h1 *ngIf="isDisabled;else addDetails">Edit Order Details</h1>
   <ng-template #addDetails>
     <h1>Add Order Details</h1>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="row mb-3">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Product Name</label>
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Product Name<span class="required-pipe">{{''|required}}</span></label>
       <div class="col-sm-10">
         <input type="text" 
         pInputText 
@@ -39,7 +39,7 @@
 
     <div class="row mb-3">
       <label for="inputPassword3" 
-      class="col-sm-2 col-form-label">Description</label>
+      class="col-sm-2 col-form-label">Description<span class="required-pipe">{{''|required}}</span></label>
       <div class="col-sm-10">
         <textarea rows="5" 
         cols="30" 
