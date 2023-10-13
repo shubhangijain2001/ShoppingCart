@@ -1,0 +1,116 @@
+<div class="container mt-5 alignElements">
+  <h1 *ngIf="isDisabled;else addDetails">Edit Order Details</h1>
+  <ng-template #addDetails>
+    <h1>Add Order Details</h1>
+  </ng-template>
+  <form [formGroup]="detailsForm">
+    <div class="row mb-3">
+      <label for="inputEmail3" 
+      class="col-sm-2 col-form-label">UUID</label>
+      <div class="col-sm-10">
+
+        <input type="text" pInputText formControlName="uuid" [disabled]="true" placeholder="UUID" />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Product Name</label>
+      <div class="col-sm-10">
+        <input type="text" 
+        pInputText 
+        formControlName="product_name" 
+        placeholder="Enter Product Name"
+        [disabled]="isDisabled" 
+        />
+        <div *ngIf="!isDisabled">
+          Characters left: {{25-detailsFormControls.product_name.value.length}}
+        </div>
+        <div *ngIf="isInvalid && detailsFormControls.product_name.invalid">
+          <div *ngIf="detailsFormControls.product_name.errors?.required" class="alert alert-danger">
+            Field is required
+          </div>
+          <div *ngIf="detailsFormControls.product_name.errors?.maxlength" class="alert alert-danger">
+            Maxlength is 25
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="inputPassword3" 
+      class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-10">
+        <textarea rows="5" 
+        cols="30" 
+        pInputTextarea 
+        [autoResize]="true" 
+        placeholder="Enter Description"
+        formControlName="description" 
+        [disabled]="isDisabled"
+        >
+      </textarea>
+        <div *ngIf="!isDisabled">
+          Characters left: {{100-detailsFormControls.description.value.length}}
+        </div>
+        <div *ngIf="isInvalid && detailsFormControls.description.invalid">
+          <div *ngIf="detailsFormControls.description.errors?.required" class="alert alert-danger">
+            Field is required
+          </div>
+          <div *ngIf="detailsFormControls.description.errors?.maxlength" class="alert alert-danger">
+            Maxlength is 100
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Price</label>
+      <div class="col-sm-10">
+        <p-inputNumber 
+        (onInput)="updateTotal($event)" 
+        formControlName="price" 
+        pKeyFilter="money" 
+        inputId="locale-us"
+        mode="decimal" 
+        locale="en-US" 
+        [maxFractionDigits]="2" 
+        aria-valuenow="null" 
+        placeholder="Enter price"
+        >
+        </p-inputNumber>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Quantity</label>
+      <div class="col-sm-10">
+        <p-inputNumber 
+        inputId="integeronly" 
+        (onInput)="updateTotal($event)" 
+        pKeyFilter="num" 
+        [attr.aria-valuenow]="2"
+        placeholder="Enter Quantity" 
+        formControlName="qty"
+        >
+      </p-inputNumber>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Total</label>
+      <div class="col-sm-10">
+
+        <input type="text" 
+        pInputText formControlName="total" 
+        [disabled]="true" 
+        placeholder="Total" />
+      </div>
+    </div>
+    <!-- <button type="submit" class="btn btn-success">Save</button> -->
+    <p-toast></p-toast>
+    <button pButton pRipple label="Save" class="btn btn-success btnSpace" (click)="save()"></button>
+
+
+<!-- <button type="button" pButton pRipple (click)="show()" label="Show" class="p-button-success"></button> -->
+    <button pButton pRipple label="Cancel" class="btn btn-warning" routerLink="/" (click)="cancel()"></button>
+  </form>
+</div>

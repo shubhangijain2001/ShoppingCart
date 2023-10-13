@@ -1,0 +1,42 @@
+
+<div class="container mt-5">
+    <h2>Shopping details</h2>
+    <div class="row mrg-bottom">
+        <router-outlet></router-outlet>
+    <button class="btn btn-light col-md-2 ml-auto" routerLink="/details">Add Details</button>
+    </div>
+    <table class="table table-dark text-center">
+        <thead>
+            <tr>
+            <th>#UUID</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let data of shoppingDetails">
+            <td>{{data.uuid}}</td>
+            <td>{{data.product_name}}</td>
+            <td>{{data.description}}</td>
+            <td>{{data.price | currency:"INR"}}</td>
+            <td>{{data.qty}}</td>
+            <td>{{data.total | currency:"INR"}}</td>
+            <td><button class="btn btn-dark md-2" (click)="editDetails(data.uuid)" routerLink="/details"><i class="fas fa-edit"></i></button>
+            <!-- <p-button (click)="confirmPosition('top')" icon="pi pi-arrow-down" label="Top" styleClass="p-button-warning"></p-button> -->
+            
+<!-- <div class="card flex justify-content-center gap-2"> -->
+    <p-toast></p-toast>
+    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+    <!-- <p-button (click)="confirm1()" icon="pi pi-check" label="Confirm"></p-button> -->
+    <button class="btn btn-dark md-2"><i class="fas fa-trash" (click)="delete(data.uuid)"></i></button>
+    <!-- <p-button (click)="confirm2()" icon="pi pi-times" label="Delete" class="p-button-danger"></p-button>  -->
+<!-- </div> -->
+<!-- <button class="btn btn-dark md-2"><i class="fas fa-trash" (click)="delete(data.uuid)"></i></button></td> -->
+        </tr>
+    </table>
+
+<p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10, 15,20]"></p-paginator>
+</div>
